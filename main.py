@@ -36,7 +36,9 @@ while running:
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
                 score = score+1
 
+#Отрисовка мишени
     screen.blit(target_img, (target_x, target_y))
+#Отрисовка счетчика попаданий
     screen.blit(text, (750, 10))
     pygame.display.update()
 
