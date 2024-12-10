@@ -1,5 +1,4 @@
 from calendar import month
-
 import pygame
 import random
 from pygame.examples.go_over_there import screen, running
@@ -20,11 +19,13 @@ target_height = 80
 
 target_x = random.randint(0,SCREEN_WIDTH-target_width)
 target_y = random.randint(0, SCREEN_HEIGHT-target_height)
-
 color = 133
+score = 0
 
 while running:
     screen.fill(color)
+    font = pygame.font.SysFont('couriernew', 20)
+    text = font.render(str(score), True, 'green')
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -33,10 +34,10 @@ while running:
             if target_x < mouse_x< target_x+target_width and target_y < mouse_y< target_y+target_width:
                 target_x = random.randint(0, SCREEN_WIDTH - target_width)
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
+                score = score+1
 
     screen.blit(target_img, (target_x, target_y))
+    screen.blit(text, (750, 10))
     pygame.display.update()
-
-
 
 pygame.quit()
